@@ -22,7 +22,7 @@ class _Tab1ScreenState extends State<Tab1Screen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('WinStrike • Drills'),
+        title: const Text('Win • Drills'),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
