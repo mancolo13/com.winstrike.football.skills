@@ -1,4 +1,4 @@
-package com.arenasport.football.matchtracker
+package com.winstrike.football.skills
 
 import android.os.Build
 import android.os.Bundle

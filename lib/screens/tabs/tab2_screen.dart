@@ -9,7 +9,14 @@ class Tab2Screen extends StatefulWidget {
 }
 
 class _Tab2ScreenState extends State<Tab2Screen> {
-  int _counter = 0;
+  String _selectedFormation = '4-3-3 Атакующая';
+
+  final List<Map<String, String>> _tactics = [
+    {'title': 'Высокий прессинг', 'desc': 'Давление на защитников при первом пасе вратаря.'},
+    {'title': 'Быстрый переход в атаку', 'desc': 'Выход из обороны через вертикальный пас в центр.'},
+    {'title': 'Перегруз полуфланга', 'desc': 'Создание численного преимущества 3 в 2 на фланге.'},
+    {'title': 'Компактный средний блок', 'desc': 'Сужение линий защиты и полузащиты при позиционной обороне.'},
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -23,107 +30,75 @@ class _Tab2ScreenState extends State<Tab2Screen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              padding: const EdgeInsets.all(24.0),
+              padding: const EdgeInsets.all(18),
               decoration: BoxDecoration(
                 color: AppTheme.surfaceColor,
-                borderRadius: BorderRadius.circular(24.0),
-                border: Border.all(
-                  color: AppTheme.primaryColor.withValues(alpha: 0.3),
-                  width: 1.5,
-                ),
+                borderRadius: BorderRadius.circular(18),
+                border: Border.all(color: AppTheme.primaryColor.withValues(alpha: 0.3)),
               ),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(
-                      color: AppTheme.primaryColor.withValues(alpha: 0.15),
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(
-                      Icons.schema,
-                      size: 48,
-                      color: AppTheme.primaryColor,
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  const Text(
-                    'Tactical Score',
-                    style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.w900,
-                      color: Colors.white,
-                    ),
-                  ),
+                  const Text('Тактическая расстановка', style: TextStyle(color: Colors.white70, fontSize: 12)),
                   const SizedBox(height: 6),
-                  Text(
-                    'pts',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.white.withValues(alpha: 0.7),
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  const SizedBox(height: 24),
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      setState(() => _counter++);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Review Plays выполнено! (Счетчик: \$$_counter)'),
-                          duration: const Duration(seconds: 1),
-                          backgroundColor: AppTheme.primaryColor,
+                  Text(_selectedFormation, style: const TextStyle(color: AppTheme.primaryColor, fontSize: 20, fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 14),
+                  Row(
+                    children: ['4-3-3', '4-2-3-1', '3-5-2', '4-4-2'].map((f) {
+                      final sel = _selectedFormation.startsWith(f);
+                      return Expanded(
+                        child: GestureDetector(
+                          onTap: () => setState(() => _selectedFormation = '$f ${sel ? "" : "Атакующая"}'),
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 3),
+                            padding: const EdgeInsets.symmetric(vertical: 8),
+                            decoration: BoxDecoration(
+                              color: sel ? AppTheme.primaryColor : AppTheme.cardColor,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Center(
+                              child: Text(
+                                f,
+                                style: TextStyle(
+                                  color: sel ? Colors.black : Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                       );
-                    },
-                    icon: const Icon(Icons.bolt, color: Colors.black),
-                    label: const Text('Review Plays'),
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: const Size.fromHeight(50),
-                    ),
+                    }).toList(),
                   ),
                 ],
               ),
             ),
             const SizedBox(height: 20),
-            Container(
-              padding: const EdgeInsets.all(20.0),
+            const Text('Принципы игры команды', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 12),
+            ..._tactics.map((t) => Container(
+              margin: const EdgeInsets.only(bottom: 10),
+              padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: AppTheme.cardColor,
-                borderRadius: BorderRadius.circular(20.0),
+                borderRadius: BorderRadius.circular(14),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Активность',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        'Всего взаимодействий:',
-                        style: TextStyle(color: Colors.white.withValues(alpha: 0.7)),
-                      ),
-                      Text(
-                        '\$$_counter',
-                        style: const TextStyle(
-                          color: AppTheme.secondaryColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
+                      const Icon(Icons.shield_outlined, color: AppTheme.primaryColor, size: 18),
+                      const SizedBox(width: 8),
+                      Text(t['title']!, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14)),
                     ],
                   ),
+                  const SizedBox(height: 6),
+                  Text(t['desc']!, style: const TextStyle(color: Colors.white70, fontSize: 13, height: 1.3)),
                 ],
               ),
-            ),
+            )),
           ],
         ),
       ),
