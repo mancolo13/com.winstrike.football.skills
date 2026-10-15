@@ -7,10 +7,10 @@ class Tab4Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final matches = [
-      {'vs': 'vs Сокол FC', 'score': '3 : 1', 'res': 'Победа', 'win': true, 'stats': '2 гола • 1 ассист'},
-      {'vs': 'vs Авангард', 'score': '2 : 2', 'res': 'Ничья', 'win': false, 'stats': '1 ассист • 84 мин'},
-      {'vs': 'vs Металлург', 'score': '4 : 0', 'res': 'Победа', 'win': true, 'stats': '1 гол • 90 мин'},
-      {'vs': 'vs Торпедо', 'score': '1 : 2', 'res': 'Поражение', 'win': false, 'stats': '70 мин • 4 удара'},
+      {'vs': 'vs Falcon FC', 'score': '3 : 1', 'res': 'Victory', 'win': true, 'stats': '2 goals • 1 assist'},
+      {'vs': 'vs Vanguard', 'score': '2 : 2', 'res': 'Draw', 'win': false, 'stats': '1 assist • 84 min'},
+      {'vs': 'vs Metallurg', 'score': '4 : 0', 'res': 'Victory', 'win': true, 'stats': '1 goal • 90 min'},
+      {'vs': 'vs Torpedo', 'score': '1 : 2', 'res': 'Defeat', 'win': false, 'stats': '70 min • 4 shots'},
     ];
 
     return Scaffold(
@@ -35,32 +35,32 @@ class Tab4Screen extends StatelessWidget {
                   Column(
                     children: [
                       Text('14', style: TextStyle(color: AppTheme.primaryColor, fontSize: 24, fontWeight: FontWeight.bold)),
-                      Text('Матчей', style: TextStyle(color: Colors.white60, fontSize: 12)),
+                      Text('Matches', style: TextStyle(color: Colors.white60, fontSize: 12)),
                     ],
                   ),
                   Column(
                     children: [
                       Text('9', style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold)),
-                      Text('Голов', style: TextStyle(color: Colors.white60, fontSize: 12)),
+                      Text('Goals', style: TextStyle(color: Colors.white60, fontSize: 12)),
                     ],
                   ),
                   Column(
                     children: [
                       Text('6', style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold)),
-                      Text('Ассистов', style: TextStyle(color: Colors.white60, fontSize: 12)),
+                      Text('Assists', style: TextStyle(color: Colors.white60, fontSize: 12)),
                     ],
                   ),
                   Column(
                     children: [
                       Text('7.8', style: TextStyle(color: AppTheme.secondaryColor, fontSize: 24, fontWeight: FontWeight.bold)),
-                      Text('Рейтинг', style: TextStyle(color: Colors.white60, fontSize: 12)),
+                      Text('Rating', style: TextStyle(color: Colors.white60, fontSize: 12)),
                     ],
                   ),
                 ],
               ),
             ),
             const SizedBox(height: 20),
-            const Text('История последних игр', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
+            const Text('Recent Match History', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
             const SizedBox(height: 12),
             ...matches.map((m) => Container(
               margin: const EdgeInsets.only(bottom: 10),

@@ -11,11 +11,11 @@ class Tab1Screen extends StatefulWidget {
 class _Tab1ScreenState extends State<Tab1Screen> {
   int _completedDrills = 3;
   final List<Map<String, dynamic>> _drills = [
-    {'title': 'Зигзаг между конусами', 'cat': 'Дриблинг', 'mins': '15 мин', 'done': true},
-    {'title': 'Точность удара в девятку', 'cat': 'Удары', 'mins': '20 мин', 'done': true},
-    {'title': 'Пас в одно касание у стены', 'cat': 'Передачи', 'mins': '12 мин', 'done': true},
-    {'title': 'Рывок с мячом 30 метров', 'cat': 'Скорость', 'mins': '10 мин', 'done': false},
-    {'title': 'Финт Зидана и смена темпа', 'cat': 'Дриблинг', 'mins': '15 мин', 'done': false},
+    {'title': 'Cone Slalom Dribbling', 'cat': 'Dribbling', 'mins': '15 min', 'done': true},
+    {'title': 'Top-Corner Shooting Accuracy', 'cat': 'Shooting', 'mins': '20 min', 'done': true},
+    {'title': 'One-touch Wall Passing', 'cat': 'Passing', 'mins': '12 min', 'done': true},
+    {'title': '30m Sprint with Ball', 'cat': 'Speed', 'mins': '10 min', 'done': false},
+    {'title': 'Roulette & Pace Change', 'cat': 'Dribbling', 'mins': '15 min', 'done': false},
   ];
 
   @override
@@ -48,15 +48,15 @@ class _Tab1ScreenState extends State<Tab1Screen> {
                           color: AppTheme.primaryColor.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: const Text('ТРЕНИРОВКА ДНЯ', style: TextStyle(color: AppTheme.primaryColor, fontWeight: FontWeight.bold, fontSize: 11)),
+                        child: const Text('DAILY WORKOUT', style: TextStyle(color: AppTheme.primaryColor, fontWeight: FontWeight.bold, fontSize: 11)),
                       ),
-                      const Text('🔥 Уровень: Профи', style: TextStyle(color: Colors.white70, fontSize: 12)),
+                      const Text('🔥 Level: Pro', style: TextStyle(color: Colors.white70, fontSize: 12)),
                     ],
                   ),
                   const SizedBox(height: 12),
-                  const Text('Контроль мяча & Скоростной Дриблинг', style: TextStyle(color: Colors.white, fontSize: 19, fontWeight: FontWeight.bold)),
+                  const Text('Ball Control & Speed Dribbling', style: TextStyle(color: Colors.white, fontSize: 19, fontWeight: FontWeight.bold)),
                   const SizedBox(height: 6),
-                  const Text('45 мин • 4 упражнения • 320 ккал', style: TextStyle(color: Colors.white60, fontSize: 13)),
+                  const Text('45 min • 4 drills • 320 kcal', style: TextStyle(color: Colors.white60, fontSize: 13)),
                   const SizedBox(height: 16),
                   Row(
                     children: [
@@ -79,7 +79,7 @@ class _Tab1ScreenState extends State<Tab1Screen> {
               ),
             ),
             const SizedBox(height: 22),
-            const Text('Список упражнений', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
+            const Text('Drill Schedule', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
             const SizedBox(height: 12),
             ..._drills.map((d) => Container(
               margin: const EdgeInsets.only(bottom: 10),
